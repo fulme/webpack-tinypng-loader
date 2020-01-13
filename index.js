@@ -31,7 +31,6 @@ module.exports = function (content, map, meta) {
 
       if (!options.apikey) {
         this.emitWarning(new Error(`${NAME}: No API key provided for TinyPNG/TinyJPG. **Images not optimized**\nYou can find instructions on getting your API key at https://www.npmjs.com/package/tinify-loader`));
-
         return done(null, content);
       }
     }
@@ -46,7 +45,8 @@ module.exports = function (content, map, meta) {
           }
         } catch (error) {
           if (error.code !== 'EEXIST') {
-            return done(new Error(`${NAME}: ${error.message}`));
+            this.emitWarning(new Error(`${NAME}: ${error.message}`));
+            return done(null, content);
           }
         }
 
@@ -57,7 +57,8 @@ module.exports = function (content, map, meta) {
     tinify.key = options.apikey;
     tinify.fromBuffer(content).toBuffer((error, body) => {
       if (error) {
-        return done(new Error(`${NAME}: ${error.message}`));
+        this.emitWarning(new Error(`${NAME}: ${error.message}`));
+        return done(null, content);
       }
 
       fs.writeFile(checksumfile, body, err => err && console.log(err));
