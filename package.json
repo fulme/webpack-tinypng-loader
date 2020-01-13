@@ -1,6 +1,6 @@
 {
   "name": "webpack-tinypng-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Optimizes your images with TinyPNG/TinyJPG and persistently caches the results to avoid eating up your API rate limit.",
   "main": "index.js",
   "engines": {
