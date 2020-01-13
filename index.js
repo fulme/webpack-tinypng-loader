@@ -54,8 +54,15 @@ module.exports = function (content, map, meta) {
       }, '/');
     }
 
+    const timer = setTimeout(() => {
+      this.emitWarning(new Error('Tinypng api call timeout.'));
+      return done(null, content);
+    }, options.timeout || 6e3);
+
     tinify.key = options.apikey;
     tinify.fromBuffer(content).toBuffer((error, body) => {
+      clearTimeout(timer);
+
       if (error) {
         this.emitWarning(new Error(`${NAME}: ${error.message}`));
         return done(null, content);
