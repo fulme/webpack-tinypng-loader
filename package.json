@@ -1,0 +1,26 @@
+{
+  "name": "webpack-tinypng-loader",
+  "version": "1.0.0",
+  "description": "Optimizes your images with TinyPNG/TinyJPG and persistently caches the results to avoid eating up your API rate limit.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "optimize",
+    "compress",
+    "image",
+    "tinypng",
+    "tinyjpg",
+    "tinify",
+    "cache"
+  ],
+  "repository": "git@github.com:fulme/webpack-tinypng-loader.git",
+  "author": "403353504@qq.com",
+  "license": "MIT",
+  "dependencies": {
+    "tinify": "^1.5.0"
+  }
+}
